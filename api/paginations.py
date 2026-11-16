@@ -22,6 +22,6 @@ class MyLimitOffsetPagination(LimitOffsetPagination):
 class MyCursorPagination(CursorPagination):
     page_size = 2
     max_page_size = 10
+    page_size_query_param = 'page_size'
     cursor_query_param = 'cursor'
-    page_query_param = 'page'
-    ordering = '-roll'
+    ordering = '-id'

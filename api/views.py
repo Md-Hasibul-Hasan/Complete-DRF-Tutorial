@@ -295,7 +295,7 @@ from .serializers import StudentSerializer
 from .throtling import MyRateThrottle
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle, ScopedRateThrottle
 
-# for filters
+# for search and filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -312,9 +312,10 @@ class StudentModelViewSet(viewsets.ModelViewSet):
     # throttle_classes = [MyRateThrottle]
 
     filter_backends = [DjangoFilterBackend, SearchFilter,OrderingFilter]
-    filterset_fields = ['name', 'city']
-    search_fields = ['name', 'city']
+    filterset_fields = ['name', 'city']  #Give exact matches : name='HASIB
+    search_fields = ['name', 'city']     #Find text containing keyword : name='has'
     ordering_fields = ['name', 'roll']
+    # ordering = ['-created_at'] # Default ordering
 
     pagination_class = MyPageNumberPagination
     # pagination_class = MyLimitOffsetPagination
